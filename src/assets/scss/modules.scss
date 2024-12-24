@@ -1,0 +1,30 @@
+@import './themes.scss';
+
+@mixin characters-display($fontSize) 
+{
+    font-family: 'DS', sans-serif;
+    color: $displayCaractersColor;
+    font-size: $fontSize;
+    text-align: end;
+}
+
+.calculator {
+
+    &__display {
+        background-color: $displayColor;
+        margin: 0 auto 30px;
+        padding: 2px 18px;
+        width: 480px;
+        height: 110px;
+        border: 2px inset $lineColor;
+        border-color: $lineColor;
+
+        &-equation {
+            @include characters-display(45px);
+        }
+
+        &-result {
+            @include characters-display(62px);
+        }
+    }
+}
