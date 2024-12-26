@@ -19,3 +19,12 @@ body {
     border-style: groove;
     border-radius: 30px;
 }
+
+@media screen and (max-width: 520px) 
+{
+    .calculator {
+        width: 328px;
+        height: 580px;
+        transform: translate(-50%, 7%);
+    }
+}
