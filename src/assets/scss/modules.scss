@@ -8,7 +8,23 @@
     text-align: end;
 }
 
+@mixin characters-box() 
+{
+    border-radius: 8px;
+    border-style: outset;
+    font-size: 22px;
+    border-color: $lineColor;
+}
+
 .calculator {
+
+    &__title {
+        color: $frameTitleColor;
+        margin: 30px auto;
+        text-align: center;
+        font-family: Orbitron, sans-serif;
+        font-size: 18px;
+    }
 
     &__display {
         background-color: $displayColor;
@@ -25,6 +41,51 @@
 
         &-result {
             @include characters-display(62px);
+        }
+    }
+
+    &__keyboard {
+        display: grid;
+        margin: 0 auto;
+        width: 480px;
+        height: 480px;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: repeat(5, auto);
+        column-gap: 8px;
+        row-gap: 8px;
+
+        &-box {
+            background-color: $boxNuberColor;
+            @include characters-box();
+        }
+
+        &-boxSignal {
+            background-color: $boxSignalColor;
+            @include characters-box();
+        }
+
+        &-boxReset {
+            background-color: $boxResetColor;
+            @include characters-box();
+        }
+
+        &-boxDel {
+            background-color: $boxDelColor;
+            @include characters-box();
+        }
+
+        &-boxEqual {
+            background-color: $boxEqual;
+            @include characters-box();
+        }
+
+        &-boxEnter {
+            background-color: $boxEnter;
+            @include characters-box();
+            grid-column-start: 3;
+            grid-column-end: 5;
+            grid-row-start: 5;
+            grid-row-end: 6;
         }
     }
 }
