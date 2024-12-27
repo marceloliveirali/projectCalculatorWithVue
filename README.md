@@ -103,5 +103,5 @@ Contribuições são bem-vindas! Para contribuir, siga estas etapas:
 
 ## Autor
 
-- [Biasiolo](https://github.com/marceloliveirali)
+- [MOL](https://github.com/marceloliveirali)
 
