@@ -9,7 +9,7 @@ A **MOL-5988** é uma calculadora simples desenvolvida com **Vue.js** e **Vite**
 ## Funcionalidades
 
 - **Operações Básicas**: Suporte para adição, subtração, multiplicação e divisão.
-- **Entrada Limitada**: Limite de 8 caracteres no visor da equação.
+- **Entrada Limitada**: Limite de 12 caracteres no visor da equação.
 - **Correção de Erros**: Botão "DEL" para remover o último caractere digitado.
 - **Cálculo Automático**: Usa a função `eval()` para calcular a equação.
 - **Armazenamento do Resultado**: O botão "Enter" permite armazenar o resultado e reutilizá-lo em novos cálculos.

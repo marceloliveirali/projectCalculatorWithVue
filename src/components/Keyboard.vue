@@ -4,23 +4,74 @@
 
     const stateKeyboard = reactive({
 
-        currentValue: '123',
+        currentValue: '',
+        currentResult: ''
     });
 
     function clearDisplay() 
     {
+        stateKeyboard.currentValue = '';
 
-        return this.stateKeyboard.currentValue = ' '; 
+        return stateKeyboard.currentResult = '';
+    }
+
+    function delLastDisplay() 
+    {
+        return stateKeyboard.currentValue = stateKeyboard.currentValue.slice(0, -1);
+    }
+
+    function insert(event) 
+    {
+        stateKeyboard.currentValue += event;
+
+        return qntDigit();
+    }
+
+    function qntDigit() 
+    {
+        if (stateKeyboard.currentValue.length <= 12) 
+        {
+            return stateKeyboard.currentValue;
+        }
+        else 
+        {
+            return stateKeyboard.currentResult = 'limite excedido';
+        }
+    }
+
+    function calculate()
+    {
+        try 
+        {
+            const evaluation = eval(stateKeyboard.currentValue.replace(/x/g, '*').replace(/÷/g, '/'));
+
+            return stateKeyboard.currentResult = parseFloat(evaluation.toFixed(4));
+        }
+        catch (error) 
+        {
+            return stateKeyboard.currentResult = 'Erro no sistema'; 
+        }
+    }
+
+    function storeResult() 
+    {
+        if (stateKeyboard.currentResult !== '') 
+        {
+            stateKeyboard.currentValue = stateKeyboard.currentResult.toString();
+
+            return stateKeyboard.currentResult = '';
+        }
     }
 
 </script>
 
 <template>
-    <Display class="calculator__display" v-bind:numbers-display-equations="stateKeyboard.currentValue" />
+    <Display class="calculator__display" v-bind:numbers-display-equations="stateKeyboard.currentValue" 
+    v-bind:numbers-display-result="stateKeyboard.currentResult" />
 
     <div class="calculator__keyboard">
-        <button type="button" class="calculator__keyboard-boxReset" @click="clearDisplay"> C </button>
-        <button type="button" class="calculator__keyboard-boxDel" @click="insert('DEL')"> DEL </button>
+        <button type="button" class="calculator__keyboard-boxReset" @click="clearDisplay()"> C </button>
+        <button type="button" class="calculator__keyboard-boxDel" @click="delLastDisplay()"> DEL </button>
         <button type="button" class="calculator__keyboard-boxSignal" @click="insert('÷')"> ÷ </button>
         <button type="button" class="calculator__keyboard-boxSignal" @click="insert('x')"> x </button>
 
@@ -37,11 +88,11 @@
         <button type="button" class="calculator__keyboard-box" @click="insert('1')"> 1 </button>
         <button type="button" class="calculator__keyboard-box" @click="insert('2')"> 2 </button>
         <button type="button" class="calculator__keyboard-box" @click="insert('3')"> 3 </button>
-        <button type="button" class="calculator__keyboard-boxEqual" @click="insert('=')"> = </button>
+        <button type="button" class="calculator__keyboard-boxEqual" @click="calculate()"> = </button>
         
         <button type="button" class="calculator__keyboard-box" @click="insert('0')"> 0 </button>
         <button type="button" class="calculator__keyboard-box" @click="insert('.')"> . </button>
-        <button type="button" class="calculator__keyboard-boxEnter" @click="insert('ENTER')"> ENTER </button>
+        <button type="button" class="calculator__keyboard-boxEnter" @click="storeResult()"> ENTER </button>
     </div>
 </template>
 
