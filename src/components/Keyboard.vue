@@ -1,32 +1,47 @@
 <script setup>
+    import { reactive } from 'vue';
+    import Display from './Display.vue';
+
+    const stateKeyboard = reactive({
+
+        currentValue: '123',
+    });
+
+    function clearDisplay() 
+    {
+
+        return this.stateKeyboard.currentValue = ' '; 
+    }
 
 </script>
 
 <template>
+    <Display class="calculator__display" v-bind:numbers-display-equations="stateKeyboard.currentValue" />
+
     <div class="calculator__keyboard">
-        <button class="calculator__keyboard-boxReset"> C </button>
-        <button class="calculator__keyboard-boxDel"> DEL </button>
-        <button class="calculator__keyboard-boxSignal"> ÷ </button>
-        <button class="calculator__keyboard-boxSignal"> x </button>
+        <button type="button" class="calculator__keyboard-boxReset" @click="clearDisplay"> C </button>
+        <button type="button" class="calculator__keyboard-boxDel" @click="insert('DEL')"> DEL </button>
+        <button type="button" class="calculator__keyboard-boxSignal" @click="insert('÷')"> ÷ </button>
+        <button type="button" class="calculator__keyboard-boxSignal" @click="insert('x')"> x </button>
 
-        <button class="calculator__keyboard-box"> 7 </button>
-        <button class="calculator__keyboard-box"> 8 </button>
-        <button class="calculator__keyboard-box"> 9 </button>
-        <button class="calculator__keyboard-boxSignal"> - </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('7')"> 7 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('8')"> 8 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('9')"> 9 </button>
+        <button type="button" class="calculator__keyboard-boxSignal" @click="insert('-')"> - </button>
 
-        <button class="calculator__keyboard-box"> 4 </button>
-        <button class="calculator__keyboard-box"> 5 </button>
-        <button class="calculator__keyboard-box"> 6 </button>
-        <button class="calculator__keyboard-boxSignal"> + </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('4')"> 4 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('5')"> 5 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('6')"> 6 </button>
+        <button type="button" class="calculator__keyboard-boxSignal" @click="insert('+')"> + </button>
 
-        <button class="calculator__keyboard-box"> 1 </button>
-        <button class="calculator__keyboard-box"> 2 </button>
-        <button class="calculator__keyboard-box"> 3 </button>
-        <button class="calculator__keyboard-boxEqual"> = </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('1')"> 1 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('2')"> 2 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('3')"> 3 </button>
+        <button type="button" class="calculator__keyboard-boxEqual" @click="insert('=')"> = </button>
         
-        <button class="calculator__keyboard-box"> 0 </button>
-        <button class="calculator__keyboard-box"> . </button>
-        <button class="calculator__keyboard-boxEnter"> ENTER </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('0')"> 0 </button>
+        <button type="button" class="calculator__keyboard-box" @click="insert('.')"> . </button>
+        <button type="button" class="calculator__keyboard-boxEnter" @click="insert('ENTER')"> ENTER </button>
     </div>
 </template>
 

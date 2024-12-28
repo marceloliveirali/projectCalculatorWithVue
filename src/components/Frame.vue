@@ -1,5 +1,4 @@
 <script setup>
-import Display from './Display.vue';
 import Keyboard from './Keyboard.vue';
 
 
@@ -8,7 +7,6 @@ import Keyboard from './Keyboard.vue';
 <template>
     <div class="calculator" scoped>
         <p class="calculator__title">MOL - 5988</p>
-        <Display class="calculator__display" />
         <Keyboard class="calculator__keyboard" />
     </div>
 </template>
